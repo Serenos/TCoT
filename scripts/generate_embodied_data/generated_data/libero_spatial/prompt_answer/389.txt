@@ -1,0 +1,173 @@
+### Task Description
+
+#### Overview of the Task
+The task involves a robotic arm interacting with a black bowl, a white plate, and a brown cookie box, all located on a wooden table. The specific instruction given to the robot is: **"pick up the black bowl on the cookie box and place it on the plate."** The black bowl is initially placed on the brown cookie box, and the white plate is located at a different position on the table. The goal is to move the black bowl from its initial position on the cookie box to the white plate.
+
+#### High-Level Movements and Justification
+Based on the executed trajectory, the high-level movements can be broken down as follows:
+
+1. **Approach the Cookie Box**: The robot needs to move towards the location where the black bowl is placed on the cookie box.
+   - **Steps**: 8-29
+   - **Justification**: The robot must first approach the cookie box to reach the black bowl. This involves moving forward until the robot is close enough to the cookie box to perform the pick-up action.
+
+2. **Lower Arm to Pick Up the Bowl**: Once the robot is near the cookie box, it needs to lower its arm to grasp the black bowl.
+   - **Steps**: 30-35, 68-72
+   - **Justification**: After approaching the cookie box, the robot must lower its arm to the appropriate height to grasp the black bowl. This involves two separate lowering actions due to the height difference between the initial approach and the final grasp.
+
+3. **Lift the Bowl**: After grasping the bowl, the robot needs to lift it off the cookie box.
+   - **Steps**: 89-93
+   - **Justification**: Once the bowl is grasped, the robot must lift it to clear the cookie box and prepare for the next movement.
+
+4. **Move Left to Approach the Plate**: The robot needs to move left to align with the position of the white plate.
+   - **Steps**: 101-104
+   - **Justification**: After lifting the bowl, the robot must move left to position itself over the white plate, where the bowl will be placed.
+
+5. **Lower Arm to Place the Bowl**: Finally, the robot needs to lower its arm to place the bowl on the white plate.
+   - **Steps**: 108-115
+   - **Justification**: Once aligned with the plate, the robot must lower its arm to place the bowl on the plate, completing the task.
+
+### Plan for the Solution
+The high-level plan for completing the task is as follows:
+- **Approach the Cookie Box**
+- **Lower Arm to Pick Up the Bowl**
+- **Lift the Bowl**
+- **Move Left to Approach the Plate**
+- **Lower Arm to Place the Bowl**
+
+### Reasoning for Each Step
+
+```python
+trajectory_reasoning = {
+    0: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Approach the Cookie Box, Lower Arm to Pick Up the Bowl, Lift the Bowl, Move Left to Approach the Plate, Lower Arm to Place the Bowl.</plan><subtask>Approach the Cookie Box</subtask><subtask_reason>The robot needs to move towards the cookie box to reach the black bowl.</subtask_reason><move>stop</move><move_reason>The robot is currently stationary and needs to prepare for the next movement.</move_reason>",
+    1: "same",
+    2: "same",
+    3: "same",
+    4: "same",
+    5: "same",
+    6: "same",
+    7: "same",
+    8: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Approach the Cookie Box, Lower Arm to Pick Up the Bowl, Lift the Bowl, Move Left to Approach the Plate, Lower Arm to Place the Bowl.</plan><subtask>Approach the Cookie Box</subtask><subtask_reason>The robot needs to move towards the cookie box to reach the black bowl.</subtask_reason><move>move forward</move><move_reason>The robot starts moving forward to approach the cookie box.</move_reason>",
+    9: "same",
+    10: "same",
+    11: "same",
+    12: "same",
+    13: "same",
+    14: "same",
+    15: "same",
+    16: "same",
+    17: "same",
+    18: "same",
+    19: "same",
+    20: "same",
+    21: "same",
+    22: "same",
+    23: "same",
+    24: "same",
+    25: "same",
+    26: "same",
+    27: "same",
+    28: "same",
+    29: "same",
+    30: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Lower Arm to Pick Up the Bowl, Lift the Bowl, Move Left to Approach the Plate, Lower Arm to Place the Bowl.</plan><subtask>Lower Arm to Pick Up the Bowl</subtask><subtask_reason>The robot needs to lower its arm to grasp the black bowl.</subtask_reason><move>move down</move><move_reason>The robot lowers its arm to reach the black bowl on the cookie box.</move_reason>",
+    31: "same",
+    32: "same",
+    33: "same",
+    34: "same",
+    35: "same",
+    36: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Lower Arm to Pick Up the Bowl, Lift the Bowl, Move Left to Approach the Plate, Lower Arm to Place the Bowl.</plan><subtask>Lower Arm to Pick Up the Bowl</subtask><subtask_reason>The robot needs to lower its arm to grasp the black bowl.</subtask_reason><move>stop</move><move_reason>The robot has reached the appropriate height to grasp the bowl and needs to prepare for the next movement.</move_reason>",
+    37: "same",
+    38: "same",
+    39: "same",
+    40: "same",
+    41: "same",
+    42: "same",
+    43: "same",
+    44: "same",
+    45: "same",
+    46: "same",
+    47: "same",
+    48: "same",
+    49: "same",
+    50: "same",
+    51: "same",
+    52: "same",
+    53: "same",
+    54: "same",
+    55: "same",
+    56: "same",
+    57: "same",
+    58: "same",
+    59: "same",
+    60: "same",
+    61: "same",
+    62: "same",
+    63: "same",
+    64: "same",
+    65: "same",
+    66: "same",
+    67: "same",
+    68: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Lift the Bowl, Move Left to Approach the Plate, Lower Arm to Place the Bowl.</plan><subtask>Lower Arm to Pick Up the Bowl</subtask><subtask_reason>The robot needs to lower its arm further to grasp the black bowl.</subtask_reason><move>move down</move><move_reason>The robot continues to lower its arm to ensure it can securely grasp the bowl.</move_reason>",
+    69: "same",
+    70: "same",
+    71: "same",
+    72: "same",
+    73: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Lift the Bowl, Move Left to Approach the Plate, Lower Arm to Place the Bowl.</plan><subtask>Lift the Bowl</subtask><subtask_reason>The robot needs to lift the bowl off the cookie box.</subtask_reason><move>stop</move><move_reason>The robot has reached the bowl and needs to prepare for lifting it.</move_reason>",
+    74: "same",
+    75: "same",
+    76: "same",
+    77: "same",
+    78: "same",
+    79: "same",
+    80: "same",
+    81: "same",
+    82: "same",
+    83: "same",
+    84: "same",
+    85: "same",
+    86: "same",
+    87: "same",
+    88: "same",
+    89: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Move Left to Approach the Plate, Lower Arm to Place the Bowl.</plan><subtask>Lift the Bowl</subtask><subtask_reason>The robot needs to lift the bowl off the cookie box.</subtask_reason><move>move up</move><move_reason>The robot lifts the bowl to clear the cookie box and prepare for the next movement.</move_reason>",
+    90: "same",
+    91: "same",
+    92: "same",
+    93: "same",
+    94: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Move Left to Approach the Plate, Lower Arm to Place the Bowl.</plan><subtask>Move Left to Approach the Plate</subtask><subtask_reason>The robot needs to move left to align with the white plate.</subtask_reason><move>stop</move><move_reason>The robot has lifted the bowl and needs to prepare for moving left.</move_reason>",
+    95: "same",
+    96: "same",
+    97: "same",
+    98: "same",
+    99: "same",
+    100: "same",
+    101: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Move Left to Approach the Plate, Lower Arm to Place the Bowl.</plan><subtask>Move Left to Approach the Plate</subtask><subtask_reason>The robot needs to move left to align with the white plate.</subtask_reason><move>move left</move><move_reason>The robot starts moving left to position itself over the white plate.</move_reason>",
+    102: "same",
+    103: "same",
+    104: "same",
+    105: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Lower Arm to Place the Bowl.</plan><subtask>Lower Arm to Place the Bowl</subtask><subtask_reason>The robot needs to lower its arm to place the bowl on the white plate.</subtask_reason><move>stop</move><move_reason>The robot has moved left and needs to prepare for lowering the bowl.</move_reason>",
+    106: "same",
+    107: "same",
+    108: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>Lower Arm to Place the Bowl.</plan><subtask>Lower Arm to Place the Bowl</subtask><subtask_reason>The robot needs to lower its arm to place the bowl on the white plate.</subtask_reason><move>move down</move><move_reason>The robot starts lowering its arm to place the bowl on the white plate.</move_reason>",
+    109: "same",
+    110: "same",
+    111: "same",
+    112: "same",
+    113: "same",
+    114: "same",
+    115: "same",
+    116: "<task>Pick up the black bowl on the cookie box and place it on the plate.</task><plan>None.</plan><subtask>None</subtask><subtask_reason>The task is complete.</subtask_reason><move>stop</move><move_reason>The robot has placed the bowl on the white plate and the task is complete.</move_reason>",
+    117: "same",
+    118: "same",
+    119: "same",
+    120: "same",
+    121: "same",
+    122: "same",
+    123: "same",
+    124: "same",
+    125: "same",
+    126: "same",
+    127: "same",
+    128: "same"
+}
+```
+
+FINISHED

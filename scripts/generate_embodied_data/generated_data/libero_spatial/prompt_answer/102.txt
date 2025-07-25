@@ -1,0 +1,218 @@
+### Task Description
+
+#### Overview of the Task
+The task is to control a robotic arm to pick up a black bowl next to a white plate and place it on the plate. The environment consists of a table where the black bowl is located next to the white plate. The goal is to execute a sequence of movements that will enable the robotic arm to grasp the black bowl, lift it, move it over the plate, and release it onto the plate.
+
+#### High-Level Movements
+Based on the task and the primitive movements listed in the `trajectory_features`, the high-level movements executed by the robotic arm are as follows:
+
+1. **Initial Positioning**: The arm moves up to clear any obstacles and position itself above the black bowl.
+   - Steps: 113-116
+   - Justification: Moving up is necessary to avoid colliding with the table or any other objects and to position the arm above the black bowl for grasping.
+
+2. **Moving to the Bowl**: The arm moves right to align itself with the black bowl.
+   - Steps: 123-125
+   - Justification: Moving right is required to position the arm directly above the black bowl, which is located to the right of the initial position.
+
+3. **Lowering to Grasp the Bowl**: The arm moves down to grasp the black bowl.
+   - Steps: 129-132
+   - Justification: Moving down is necessary to reach the black bowl and grasp it securely.
+
+4. **Lifting the Bowl**: The arm moves up to lift the black bowl.
+   - Steps: (Not explicitly shown in the trajectory, but implied by the context)
+   - Justification: Lifting the bowl is required to clear it from the table and prepare for moving it to the plate.
+
+5. **Moving to the Plate**: The arm moves to position the bowl over the white plate.
+   - Steps: (Not explicitly shown in the trajectory, but implied by the context)
+   - Justification: Moving to the plate is necessary to position the bowl directly above the plate for placing it.
+
+6. **Placing the Bowl on the Plate**: The arm moves down to place the black bowl on the white plate.
+   - Steps: (Not explicitly shown in the trajectory, but implied by the context)
+   - Justification: Moving down is required to place the black bowl on the white plate.
+
+7. **Final Positioning**: The arm moves to a safe position after completing the task.
+   - Steps: (Not explicitly shown in the trajectory, but implied by the context)
+   - Justification: Moving to a safe position ensures that the arm is clear of the table and any objects, and is ready for the next task.
+
+### Plan for the Solution
+The high-level plan for completing the task is as follows:
+1. Move up to clear any obstacles and position above the black bowl.
+2. Move right to align with the black bowl.
+3. Move down to grasp the black bowl.
+4. Lift the black bowl.
+5. Move to position the bowl over the white plate.
+6. Move down to place the black bowl on the white plate.
+7. Move to a safe position.
+
+### Reasoning for Each Step
+
+```python
+trajectory_reasoning = {
+    0: "<task>Pick up the black bowl next to the plate and place it on the plate.</task><plan>Move up, move right, move down, lift the bowl, move to the plate, move down, move to a safe position.</plan><subtask>Move up</subtask><subtask_reason>The arm needs to move up to clear any obstacles and position itself above the black bowl.</subtask_reason><move>stop</move><move_reason>The arm is currently at the initial position and needs to prepare for the first movement.</move_reason>",
+    1: "same",
+    2: "same",
+    3: "same",
+    4: "same",
+    5: "same",
+    6: "same",
+    7: "same",
+    8: "same",
+    9: "same",
+    10: "same",
+    11: "same",
+    12: "same",
+    13: "same",
+    14: "same",
+    15: "same",
+    16: "same",
+    17: "same",
+    18: "same",
+    19: "same",
+    20: "same",
+    21: "same",
+    22: "same",
+    23: "same",
+    24: "same",
+    25: "same",
+    26: "same",
+    27: "same",
+    28: "same",
+    29: "same",
+    30: "same",
+    31: "same",
+    32: "same",
+    33: "same",
+    34: "same",
+    35: "same",
+    36: "same",
+    37: "same",
+    38: "same",
+    39: "same",
+    40: "same",
+    41: "same",
+    42: "same",
+    43: "same",
+    44: "same",
+    45: "same",
+    46: "same",
+    47: "same",
+    48: "same",
+    49: "same",
+    50: "same",
+    51: "same",
+    52: "same",
+    53: "same",
+    54: "same",
+    55: "same",
+    56: "same",
+    57: "same",
+    58: "same",
+    59: "same",
+    60: "same",
+    61: "same",
+    62: "same",
+    63: "same",
+    64: "same",
+    65: "same",
+    66: "same",
+    67: "same",
+    68: "same",
+    69: "same",
+    70: "same",
+    71: "same",
+    72: "same",
+    73: "same",
+    74: "same",
+    75: "same",
+    76: "same",
+    77: "same",
+    78: "same",
+    79: "same",
+    80: "same",
+    81: "same",
+    82: "same",
+    83: "same",
+    84: "same",
+    85: "same",
+    86: "same",
+    87: "same",
+    88: "same",
+    89: "same",
+    90: "same",
+    91: "same",
+    92: "same",
+    93: "same",
+    94: "same",
+    95: "same",
+    96: "same",
+    97: "same",
+    98: "same",
+    99: "same",
+    100: "same",
+    101: "same",
+    102: "same",
+    103: "same",
+    104: "same",
+    105: "same",
+    106: "same",
+    107: "same",
+    108: "same",
+    109: "same",
+    110: "same",
+    111: "same",
+    112: "same",
+    113: "<task>Pick up the black bowl next to the plate and place it on the plate.</task><plan>Move up, move right, move down, lift the bowl, move to the plate, move down, move to a safe position.</plan><subtask>Move up</subtask><subtask_reason>The arm needs to move up to clear any obstacles and position itself above the black bowl.</subtask_reason><move>move up</move><move_reason>The arm is starting to move up to clear any obstacles and position itself above the black bowl.</move_reason>",
+    114: "same",
+    115: "same",
+    116: "same",
+    117: "<task>Pick up the black bowl next to the plate and place it on the plate.</task><plan>Move right, move down, lift the bowl, move to the plate, move down, move to a safe position.</plan><subtask>Move right</subtask><subtask_reason>The arm needs to move right to align itself with the black bowl.</subtask_reason><move>stop</move><move_reason>The arm has reached the desired height and is preparing to move right.</move_reason>",
+    118: "same",
+    119: "same",
+    120: "same",
+    121: "same",
+    122: "same",
+    123: "<task>Pick up the black bowl next to the plate and place it on the plate.</task><plan>Move right, move down, lift the bowl, move to the plate, move down, move to a safe position.</plan><subtask>Move right</subtask><subtask_reason>The arm needs to move right to align itself with the black bowl.</subtask_reason><move>move right</move><move_reason>The arm is moving right to align itself with the black bowl.</move_reason>",
+    124: "same",
+    125: "same",
+    126: "<task>Pick up the black bowl next to the plate and place it on the plate.</task><plan>Move down, lift the bowl, move to the plate, move down, move to a safe position.</plan><subtask>Move down</subtask><subtask_reason>The arm needs to move down to grasp the black bowl.</subtask_reason><move>stop</move><move_reason>The arm has aligned itself with the black bowl and is preparing to move down.</move_reason>",
+    127: "same",
+    128: "same",
+    129: "<task>Pick up the black bowl next to the plate and place it on the plate.</task><plan>Move down, lift the bowl, move to the plate, move down, move to a safe position.</plan><subtask>Move down</subtask><subtask_reason>The arm needs to move down to grasp the black bowl.</subtask_reason><move>move down</move><move_reason>The arm is moving down to grasp the black bowl.</move_reason>",
+    130: "same",
+    131: "same",
+    132: "same",
+    133: "<task>Pick up the black bowl next to the plate and place it on the plate.</task><plan>Lift the bowl, move to the plate, move down, move to a safe position.</plan><subtask>Lift the bowl</subtask><subtask_reason>The arm needs to lift the black bowl to clear it from the table.</subtask_reason><move>stop</move><move_reason>The arm has grasped the black bowl and is preparing to lift it.</move_reason>",
+    134: "same",
+    135: "same",
+    136: "same",
+    137: "same",
+    138: "same",
+    139: "same",
+    140: "same",
+    141: "same",
+    142: "same",
+    143: "same",
+    144: "same",
+    145: "same",
+    146: "same",
+    147: "same",
+    148: "same",
+    149: "same",
+    150: "same",
+    151: "same",
+    152: "same",
+    153: "same",
+    154: "same",
+    155: "same",
+    156: "same",
+    157: "same",
+    158: "same",
+    159: "same",
+    160: "same",
+    161: "same",
+    162: "same",
+    163: "same",
+}
+```
+
+FINISHED

@@ -1,0 +1,141 @@
+### Task Overview
+
+The task involves a robotic arm picking up a black bowl located between a white plate and a red and white striped ramekin and placing it on the white plate. The objects are situated on a wooden table. The robotic arm must navigate to the black bowl, grasp it, lift it, move it over to the white plate, and release it onto the plate.
+
+### High-Level Movements and Justifications
+
+Based on the task and the primitive movements listed in the `trajectory_features`, the high-level movements can be broken down as follows:
+
+1. **Navigate to the Black Bowl**
+   - **Steps**: 12-23
+   - **Justification**: The robot needs to move forward to reach the black bowl, which is located between the plate and the ramekin. This is necessary to position the arm close enough to the bowl to pick it up.
+
+2. **Lower Arm to Grasp the Black Bowl**
+   - **Steps**: 31-41
+   - **Justification**: After reaching the bowl, the robot must lower its arm to grasp the bowl. This is essential to ensure that the gripper is positioned correctly to pick up the bowl without knocking over the ramekin or the plate.
+
+3. **Lift the Black Bowl**
+   - **Steps**: 66-68
+   - **Justification**: Once the bowl is grasped, the robot must lift it to clear the table surface. This is necessary to prevent the bowl from colliding with other objects during the transfer.
+
+4. **Move the Black Bowl Over the White Plate**
+   - **Steps**: 84-85
+   - **Justification**: After lifting the bowl, the robot needs to move it over the white plate. This ensures that the bowl is positioned correctly for placement.
+
+5. **Place the Black Bowl on the White Plate**
+   - **Steps**: 84-85 (continued)
+   - **Justification**: The final step is to lower the bowl onto the white plate. This completes the task of moving the bowl from its initial position to the desired location.
+
+### Detailed Reasoning for Each Step
+
+```python
+reasoning = {
+    0: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Navigate to the black bowl, lower arm to grasp the black bowl, lift the black bowl, move the black bowl over the white plate, place the black bowl on the white plate.</plan><subtask>Navigate to the black bowl</subtask><subtask_reason>The robot needs to move forward to reach the black bowl, which is located between the plate and the ramekin.</subtask_reason><move>stop</move><move_reason>The robot is initially stopped and needs to wait for the command to start moving.</move_reason>",
+    1: "same",
+    2: "same",
+    3: "same",
+    4: "same",
+    5: "same",
+    6: "same",
+    7: "same",
+    8: "same",
+    9: "same",
+    10: "same",
+    11: "same",
+    12: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Navigate to the black bowl, lower arm to grasp the black bowl, lift the black bowl, move the black bowl over the white plate, place the black bowl on the white plate.</plan><subtask>Navigate to the black bowl</subtask><subtask_reason>The robot needs to move forward to reach the black bowl, which is located between the plate and the ramekin.</subtask_reason><move>move forward</move><move_reason>The robot starts moving forward to approach the black bowl.</move_reason>",
+    13: "same",
+    14: "same",
+    15: "same",
+    16: "same",
+    17: "same",
+    18: "same",
+    19: "same",
+    20: "same",
+    21: "same",
+    22: "same",
+    23: "same",
+    24: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Lower arm to grasp the black bowl, lift the black bowl, move the black bowl over the white plate, place the black bowl on the white plate.</plan><subtask>Lower arm to grasp the black bowl</subtask><subtask_reason>The robot has reached the black bowl and needs to lower its arm to grasp it without knocking over the ramekin or the plate.</subtask_reason><move>stop</move><move_reason>The robot stops moving forward and prepares to lower its arm.</move_reason>",
+    25: "same",
+    26: "same",
+    27: "same",
+    28: "same",
+    29: "same",
+    30: "same",
+    31: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Lower arm to grasp the black bowl, lift the black bowl, move the black bowl over the white plate, place the black bowl on the white plate.</plan><subtask>Lower arm to grasp the black bowl</subtask><subtask_reason>The robot has reached the black bowl and needs to lower its arm to grasp it without knocking over the ramekin or the plate.</subtask_reason><move>move down</move><move_reason>The robot starts lowering its arm to reach the black bowl.</move_reason>",
+    32: "same",
+    33: "same",
+    34: "same",
+    35: "same",
+    36: "same",
+    37: "same",
+    38: "same",
+    39: "same",
+    40: "same",
+    41: "same",
+    42: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Lift the black bowl, move the black bowl over the white plate, place the black bowl on the white plate.</plan><subtask>Lift the black bowl</subtask><subtask_reason>The robot has grasped the black bowl and needs to lift it to clear the table surface.</subtask_reason><move>stop</move><move_reason>The robot stops lowering its arm and prepares to lift the bowl.</move_reason>",
+    43: "same",
+    44: "same",
+    45: "same",
+    46: "same",
+    47: "same",
+    48: "same",
+    49: "same",
+    50: "same",
+    51: "same",
+    52: "same",
+    53: "same",
+    54: "same",
+    55: "same",
+    56: "same",
+    57: "same",
+    58: "same",
+    59: "same",
+    60: "same",
+    61: "same",
+    62: "same",
+    63: "same",
+    64: "same",
+    65: "same",
+    66: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Lift the black bowl, move the black bowl over the white plate, place the black bowl on the white plate.</plan><subtask>Lift the black bowl</subtask><subtask_reason>The robot has grasped the black bowl and needs to lift it to clear the table surface.</subtask_reason><move>move up</move><move_reason>The robot starts lifting the bowl to clear the table surface.</move_reason>",
+    67: "same",
+    68: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Move the black bowl over the white plate, place the black bowl on the white plate.</plan><subtask>Move the black bowl over the white plate</subtask><subtask_reason>The robot has lifted the black bowl and needs to move it over the white plate to prepare for placement.</subtask_reason><move>stop</move><move_reason>The robot stops lifting the bowl and prepares to move it horizontally.</move_reason>",
+    69: "same",
+    70: "same",
+    71: "same",
+    72: "same",
+    73: "same",
+    74: "same",
+    75: "same",
+    76: "same",
+    77: "same",
+    78: "same",
+    79: "same",
+    80: "same",
+    81: "same",
+    82: "same",
+    83: "same",
+    84: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Move the black bowl over the white plate, place the black bowl on the white plate.</plan><subtask>Move the black bowl over the white plate</subtask><subtask_reason>The robot has lifted the black bowl and needs to move it over the white plate to prepare for placement.</subtask_reason><move>move down</move><move_reason>The robot starts moving the bowl horizontally towards the white plate.</move_reason>",
+    85: "same",
+    86: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Place the black bowl on the white plate.</plan><subtask>Place the black bowl on the white plate</subtask><subtask_reason>The robot has moved the black bowl over the white plate and needs to lower it onto the plate.</subtask_reason><move>stop</move><move_reason>The robot stops moving the bowl horizontally and prepares to lower it.</move_reason>",
+    87: "same",
+    88: "same",
+    89: "same",
+    90: "same",
+    91: "same",
+    92: "same",
+    93: "same",
+    94: "same",
+    95: "same",
+    96: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>Place the black bowl on the white plate.</plan><subtask>Place the black bowl on the white plate</subtask><subtask_reason>The robot has moved the black bowl over the white plate and needs to lower it onto the plate.</subtask_reason><move>move up</move><move_reason>The robot starts lowering the bowl onto the white plate.</move_reason>",
+    97: "same",
+    98: "same",
+    99: "same",
+    100: "<task>Pick up the black bowl between the plate and the ramekin and place it on the plate.</task><plan>None.</plan><subtask>None</subtask><subtask_reason>The task is completed; the black bowl is now on the white plate.</subtask_reason><move>stop</move><move_reason>The robot stops all movements as the task is completed.</move_reason>",
+    101: "same",
+    102: "same",
+    103: "same",
+    104: "same",
+}
+```
+
+FINISHED
