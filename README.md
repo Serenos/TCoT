@@ -72,10 +72,10 @@ server:
 
 We release two TCoT models trained as part of our work, and the dataset of trajectory-based reasonings, available [on our
 HuggingFace page]():
-- [`libero_spatial_trajectory`](): The trajectory-based reasoning dataset for libero-spatial dataset.
-- [`libero_goal_trajectory`](): The trajectory-based reasoning dataset for libero-goal dataset.
-- [`libero_object_trajectory`](): The trajectory-based reasoning dataset for libero-object dataset.
-- [`libero_10_trajectory`](): The trajectory-based reasoning dataset for libero-10 dataset.
+- [`libero_spatial_trajectory`](scripts\generate_trajectory\trajectory_data\full_trajectory_v3.1_libero_spatial.json): The trajectory-based reasoning dataset for libero-spatial dataset.
+- [`libero_goal_trajectory`](scripts\generate_trajectory\trajectory_data\full_trajectory_v3.1_libero_goal.json): The trajectory-based reasoning dataset for libero-goal dataset.
+- [`libero_object_trajectory`](C:\Users\lixiang\Documents\GitHub\TCoT\scripts\generate_trajectory\trajectory_data\full_trajectory_v3.1_libero_object.json): The trajectory-based reasoning dataset for libero-object dataset.
+- [`libero_10_trajectory`](scripts\generate_trajectory\trajectory_data\full_trajectory_v3.1_liber_o10.json): The trajectory-based reasoning dataset for libero-10 dataset.
 
 
 
